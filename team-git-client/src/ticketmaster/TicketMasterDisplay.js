@@ -1,9 +1,17 @@
 import React from 'react';
 
-const TMDisplay = () => {
+const TMDisplay = (props) => {
+    const eventMapper = () => {
+        return props.results._embedded.events.map((e) => {
+            return (
+                <p>{e.name}</p>
+            )
+        })
+    }
+    
     return (
         <div>
-            <h5>Please display.</h5>
+            {eventMapper()}
         </div>
     )
 }
