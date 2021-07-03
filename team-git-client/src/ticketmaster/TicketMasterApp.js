@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import Geohash from 'latlon-geohash';
 
 import TMDisplay from './TicketMasterDisplay';
 
 const TicketMasterApp = (props) => {
-    const [geoPoint, setGeoPoint] = useState('');
+    const [endDateTime, setEndDateTime] = useState("");
     const [results, setResults] = useState();
 
-    // const geohash = Geohash.encode(`${props.lat}`, `${props.long}`, [9]);
-    // console.log(geohash);
+    const currentDate = new Date();
+    const futureDate = new Date(currentDate);
 
-    const propTest = () => {
-        console.log(props.lat);
-        console.log(props.long);
-    }
+    // const futureDate = (dt, n) => {
+    //     return new Date(dt.setMonth(dt.getMonth() + n));
+    // }
+
+    // const dt = new Date();
+    // setEndDateTime(futureDate(dt, 1));
 
     const fetcher = () => {
-        const staticGeoPt = "dp4ffxb79";
         const staticEndDate = "2021-08-03T00:00:00Z";
-        const staticSort = "date,name,desc";
         const apiKey = "tNGTJR4arQoc6d5dHyQ4HOamibbgtO8g";
-        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?geoPoint=${staticGeoPt}&endDateTime=${staticEndDate}&staticSort=${staticSort}&apikey=${apiKey}`)
+        fetch(`https://app.ticketmaster.com/discovery/v2/events.json?latlong=${props.lat},${props.long}&endDateTime=${staticEndDate}&apikey=${apiKey}`)
             .then (res => {
                 if (res.status !== 200) {
                     throw new Error ('Fetch Error');
@@ -28,6 +27,7 @@ const TicketMasterApp = (props) => {
             })
             .then (json => {
                 console.log(json);
+                setResults(json);
             })
             .catch (err => console.log(err))
     }
@@ -35,7 +35,7 @@ const TicketMasterApp = (props) => {
     return (
         <div>
             <button onClick={fetcher}>Find Events Nearby!</button>
-            {propTest()}
+            {console.log(currentDate)}
         </div>
     )
 }
