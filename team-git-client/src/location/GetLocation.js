@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import TicketMasterApp from '../ticketmaster/TicketMasterApp';
 
 const GetLocation = () => {
-    
-    const location = () => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(`Latitude is ${position.coords.latitude}`);
-            console.log(`Longitude is ${position.coords.longitude}`);
+    const [lat, setLat] = useState();
+    const [long, setLong] = useState();
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLat (position.coords.latitude);
+            setLong (position.coords.longitude);
         }) 
-    }
+    }, [])
+
     
     return (
         <div>
-            <h4>Geolocation JS API in React</h4>
-            {location()}
+            <h4>Current location is: {lat} + {long}</h4>
+            <TicketMasterApp lat={lat} long={long} />
         </div>
     )
 }
