@@ -28,8 +28,8 @@ const TicketMasterApp = (props) => {
                 } else return res.json();
             })
             .then (json => {
-                console.log(json);
-                setResults(json);
+                console.log(json._embedded.events);
+                setResults(json._embedded.events);
             })
             .catch (err => console.log(err))
     }
