@@ -1,9 +1,10 @@
 import React from 'react';
 
-const WeatherDisplay = () => {
+const WeatherDisplay = (props) => {
     return(
         <div>
-            <h1>Diplay weather</h1>
+            <h1>{props.name}</h1>
+            {console.log(props.name)}
         </div>
     )
 }
