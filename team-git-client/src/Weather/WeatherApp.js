@@ -16,7 +16,7 @@ const WeatherApp = (props) => {
 
     const [weather, setWeather] = useState();
 
-    let apiKey = "2d765e4fdc07f7fef0fa8fda05c45967";
+    let apiKey = "dcee62d41438be11823b7568498cc8e9";
 
     const fetcher = () => {
         fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}`)
