@@ -3,6 +3,7 @@ import {
     Button
 } from '@material-ui/core';
 
+import TMSearch from './TicketMasterSearch';
 import TMDisplay from './TicketMasterDisplay';
 
 const TicketMasterApp = (props) => {
@@ -40,6 +41,7 @@ const TicketMasterApp = (props) => {
 
     return (
         <div>
+            <TMSearch />
             <Button size="medium" color="primary" variant="contained" onClick={fetcher}>Find Events Nearby!</Button>
             <TMDisplay result={result} />
             {/* {console.log(currentDate)} */}
