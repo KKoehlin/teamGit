@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import TicketMasterApp from '../ticketmaster/TicketMasterApp';
 import WeatherApp from '../Weather/WeatherApp';
+import NasaApp from '../nasa/NasaApp';
 
 const GetLocation = () => {
     const [lat, setLat] = useState();
@@ -20,6 +21,7 @@ const GetLocation = () => {
             <h4>Current location is: {lat} + {long}</h4>
             <TicketMasterApp lat={lat} long={long} />
             <WeatherApp lat={lat} long={long} />
+            <NasaApp lat={lat} long={long} />
         </div>
     )
 }
