@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import TicketMasterApp from '../ticketmaster/TicketMasterApp';
+import WeatherApp from '../Weather/WeatherApp';
 
 const GetLocation = () => {
     const [lat, setLat] = useState();
