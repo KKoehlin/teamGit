@@ -14,28 +14,17 @@ import { Button } from '@material-ui/core';
 const WeatherApp = (props) => {
 
     const [weatherInfo, setWeatherInfo] = useState();
-    const [unit, setUnit] = useState("metric");
 
     let apiKey = "dcee62d41438be11823b7568498cc8e9";
 
-    const toggleBtn = () => {
-        return (
-            (unit === "metric") ? setUnit("imperial") : setUnit("metric")
-        )
-    }
-
-
-const fetcher = () => {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=${unit}`)
-        .then(res => res.json())
-        .then(json => {
-            setWeatherInfo(json)
-            console.log(json)
-
-
+    const fetcher = () => {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=imperial`)
+            .then(res => res.json())
+            .then(json => {
+                setWeatherInfo(json);
+                console.log(json);
         })
         .catch(err => console.log(err))
-
     }
 
     return (
@@ -43,8 +32,9 @@ const fetcher = () => {
 
             <Button size="medium" variant="contained" onClick={fetcher}>What's the weather?</Button>
             <br />
-            <Button size="small" variant="contained" onClick={toggleBtn}>Change weather Unit</Button>
-            <WeatherDisplay weatherInfon={weatherInfo} />
+            {/* {console.log(weatherInfo)} */}
+            <WeatherDisplay weatherInfo={weatherInfo} />
+
         </div>
     )
 }
