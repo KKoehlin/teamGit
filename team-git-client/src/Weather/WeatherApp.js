@@ -17,18 +17,11 @@ let url = 'http://api.openweathermap.org/data/2.5/weather?lat=39.791000&lon=-86.
 const WeatherApp = (props) => {
 
     const [weatherInfo, setWeatherInfo] = useState();
-    const [unit, setUnit] = useState("metric");
 
     let apiKey = "dcee62d41438be11823b7568498cc8e9";
 
-    const toggleBtn = () => {
-        return (
-            (unit === "metric") ? setUnit("imperial") : setUnit("metric")
-        )
-    }
-
     const fetcher = () => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=${unit}`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=imperial`)
             .then(res => res.json())
             .then(json => {
                 setWeatherInfo(json);
@@ -47,7 +40,6 @@ const WeatherApp = (props) => {
         <div>
             <Button size="medium" variant="contained" onClick={fetcher}>What's the Weather?</Button>
             <br />
-            <Button size="small" variant="contained" onClick={toggleBtn}>Change Weather Unit</Button>
             {/* {console.log(weatherInfo)} */}
             <WeatherDisplay weatherInfo={weatherInfo} />
         </div>
