@@ -19,9 +19,9 @@ const GetLocation = () => {
     return (
         <div>
             <h4>Current location is: {lat} + {long}</h4>
-            <TicketMasterApp lat={lat} long={long} />
             <WeatherApp lat={lat} long={long} />
             <NasaApp lat={lat} long={long} />
+            <TicketMasterApp lat={lat} long={long} />
         </div>
     )
 }

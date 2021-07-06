@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import WeatherDisplay from './WeatherDisplay';
 //import GetLocation from '..location/GetLocation';
 
-
+import {
+    Button
+} from '@material-ui/core';
 
 //let lat = "39.791000"
 //let lon = "-86.148003"
@@ -14,16 +16,23 @@ let url = 'http://api.openweathermap.org/data/2.5/weather?lat=39.791000&lon=-86.
 
 const WeatherApp = (props) => {
 
-    const [weather, setWeather] = useState();
+    const [weatherInfo, setWeatherInfo] = useState();
+    const [unit, setUnit] = useState("metric");
 
     let apiKey = "dcee62d41438be11823b7568498cc8e9";
 
+    const toggleBtn = () => {
+        return (
+            (unit === "metric") ? setUnit("imperial") : setUnit("metric")
+        )
+    }
+
     const fetcher = () => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=${unit}`)
             .then(res => res.json())
             .then(json => {
-                console.log(json)
-                setWeather(json)
+                setWeatherInfo(json);
+                console.log(json);
 
                 //let tempF = url + apiKey + '&units=imperial';
                 //console.log(tempF)
@@ -31,15 +40,18 @@ const WeatherApp = (props) => {
                 //let tempC = url + apiKey + '&units=metric';
                 //console.log(tempC)
             })
+            .catch(err => console.log(err))
     }
 
     return (
         <div>
-            <WeatherDisplay weather={weather} />
+            <Button size="medium" variant="contained" onClick={fetcher}>What's the Weather?</Button>
+            <br />
+            <Button size="small" variant="contained" onClick={toggleBtn}>Change Weather Unit</Button>
+            {/* {console.log(weatherInfo)} */}
+            <WeatherDisplay weatherInfo={weatherInfo} />
         </div>
     )
 }
-
-
 
 export default WeatherApp;
