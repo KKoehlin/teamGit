@@ -22,8 +22,8 @@ const WeatherDisplay = (props) => {
         if (unit === ' \u00b0F') {
             setUnit(' \u00b0C');
             setBtn('Change to Fahrenheit');
-            setCurrentTemp((currTemp - 32) * 0.5556);
-            setFeelsTemp((feelsTemp - 32) * 0.5556);
+            setCurrentTemp(((currTemp - 32) * 0.5556).toFixed(2));
+            setFeelsTemp(((feelsTemp - 32) * 0.5556).toFixed(2));
         } else {
             setUnit(' \u00b0F');
             setBtn('Change to Celsius');
@@ -33,6 +33,9 @@ const WeatherDisplay = (props) => {
     }
 
     const useStyles = makeStyles({
+        root: {
+            display: 'flex',
+        },
         media: {
             height: 0,
             paddingTop: '56.25%',
@@ -44,7 +47,7 @@ const WeatherDisplay = (props) => {
     const display = () => {
         if (props.weatherInfo) {
             return (
-                <Card>
+                <Card className={classes.root}>
                     <CardHeader
                         title={props.weatherInfo.name}
                     />
