@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import WeatherDisplay from './WeatherDisplay';
 //import GetLocation from '..location/GetLocation';
 
-import { Button } from '@material-ui/core';
 
+import { Button } from '@material-ui/core';
 
 //let lat = "39.791000"
 //let lon = "-86.148003"
@@ -24,6 +24,7 @@ const WeatherApp = (props) => {
         )
     }
 
+
 const fetcher = () => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${props.lat}&lon=${props.long}&appid=${apiKey}&units=${unit}`)
         .then(res => res.json())
@@ -31,12 +32,15 @@ const fetcher = () => {
             setWeatherInfo(json)
             console.log(json)
 
+
         })
         .catch(err => console.log(err))
+
     }
 
     return (
         <div>
+
             <Button size="medium" variant="contained" onClick={fetcher}>What's the weather?</Button>
             <br />
             <Button size="small" variant="contained" onClick={toggleBtn}>Change weather Unit</Button>
@@ -45,3 +49,4 @@ const fetcher = () => {
     )
 }
     export default WeatherApp;
+

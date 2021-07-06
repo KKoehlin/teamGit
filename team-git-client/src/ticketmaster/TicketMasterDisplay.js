@@ -27,6 +27,12 @@ const TMDisplay = (props) => {
             paddingRight: '20px',
             paddingLeft: '20px',
         },
+        cardContent: {
+            paddingTop: '0px',
+        },
+        cardHeader: {
+            paddingBottom: '0px',
+        },
     });
 
     const classes = useStyles();
@@ -38,9 +44,20 @@ const TMDisplay = (props) => {
                     <Grid item xs={12} sm={6} md={4}>
                         <Card className={classes.root}>
                             <CardHeader
+                                className={classes.cardHeader}
                                 title={e.name}
-                                subheader={e.dates.start.dateTime}
                             />
+                            <CardContent className={classes.cardContent}>
+                                <Typography>
+                                    {e._embedded.venues[0].name}
+                                </Typography>
+                                <Typography>
+                                    {e.dates.start.localDate}
+                                </Typography>
+                                <Typography>
+                                    {e.dates.start.localTime}
+                                </Typography>
+                            </CardContent>
                             <CardMedia
                                 className={classes.media}
                                 image={e.images[6].url}

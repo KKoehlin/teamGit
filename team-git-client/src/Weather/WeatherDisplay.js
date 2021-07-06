@@ -18,7 +18,10 @@ const WeatherDisplay = (props) => {
         if (props.weatherInfo) {
             return (
                 <Card>
-                    <CardHeader title={props.weatherInfo.name} />
+
+                    <CardHeader
+                        title={props.weatherInfo.name}
+                    />
                     <CardContent>
                         <Typography>
                             {props.weatherInfo.weather[0].description}
@@ -29,11 +32,13 @@ const WeatherDisplay = (props) => {
         }
     }
 
+
     return(
         <div>
             {display()}
         </div>
     )
 }
+
 
 export default WeatherDisplay;
