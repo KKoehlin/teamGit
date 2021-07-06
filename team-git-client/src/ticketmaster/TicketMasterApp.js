@@ -41,7 +41,7 @@ const TicketMasterApp = (props) => {
 
     return (
         <div>
-            <TMSearch />
+            {/* <TMSearch /> */}
             <Button size="medium" color="primary" variant="contained" onClick={fetcher}>Find Events Nearby!</Button>
             <TMDisplay result={result} />
             {/* {console.log(currentDate)} */}

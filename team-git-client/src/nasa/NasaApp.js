@@ -9,7 +9,7 @@ fetch(`https://api.nasa.gov/planetary/earth/assets?lon=${props.long}&lat=${props
 //fetch("https://api.nasa.gov/planetary/earth/imagery?lon=-86.03&lat=39.90&api_key=BLcnhcKA00Yu9E4TtarQeorQbTq0C4mrQiJRvM0e")
 .then(res => res.json())
 .then(json => {
-console.log(json)
+// console.log(json)
 })
 
 return(
